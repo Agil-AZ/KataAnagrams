@@ -14,6 +14,7 @@ class Anagrams {
 	) {
 		$groups = array();
 		foreach ($this->input_lines as $word) {
+			$word = trim($word);
 			$numGroup = self::findGroup($word, $groups);
 			if ($numGroup == -1) {
 				$groups []= $word;
@@ -63,6 +64,5 @@ class Anagrams {
 				return false;
 		}
 		return true;
-	}
-
+	}	
 }
