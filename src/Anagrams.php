@@ -5,28 +5,29 @@ class Anagrams {
 	public static $anagrams = array();
 
 	public static function printAnagrams() {
-		$ar=fopen(dirname(__FILE__)."/../english-words.95","r") or
+		$ar=fopen(dirname(__FILE__)."/../english-words.96","r") or
     			die("No se pudo abrir el archivo");
   	
 		while (!feof($ar))
  		 {
 			$setToAnagram = false;
-    			$word=fgets($ar);
-			foreach (self::$anagrams as $anagram) {
-				if ($anagram->acceptWord($word)) {
-					$setToAnagram = true;
-					break;
+    			$word=trim(fgets($ar));
+			if ($word != "") {
+				foreach (self::$anagrams as $anagram) {
+					if ($anagram->acceptWord($word)) {
+						$setToAnagram = true;
+						break;
+					}
 				}
-			}
-			if (!$setToAnagram) {
-				self::$anagrams[]= new Anagram($word);
+				if (!$setToAnagram) {
+					self::$anagrams[]= new Anagram($word);
+				}
 			}
  		 }
   		fclose($ar);
 
 		foreach (self::$anagrams as $anagram) {
-			$anagram->toString();
-			echo "\n";
+			echo $anagram->toString() ."\n";
 		}
 	}
 }
@@ -54,9 +55,11 @@ class Anagram {
 	}
 
 	public function toString() {
-		foreach ($words as $word) {
-			echo $word . " ";
+		$result = "";
+		foreach ($this->words as $word) {
+			$result .= $word . " ";
 		}
+		return $result;
 	}
 
 }
