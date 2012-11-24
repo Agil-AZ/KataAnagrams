@@ -8,7 +8,7 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp(
 	) {
-		$this->anagrams = new Anagrams(dirname(__FILE__)."/../english-words.96");
+		$this->anagrams = new Anagrams(dirname(__FILE__)."/../small.txt");
 	}
 
 	/* ACCEPTANCE TESTS */
