@@ -33,7 +33,9 @@ class Word {
 
 	private $theWord;
 	private $canonical;
+
 	public static $zero_histogram;
+	private static $instances = array();
 
 	public function __construct(
 		$theWord
@@ -45,7 +47,12 @@ class Word {
 	public static function theWord(
 		$theWord
 	) {
-		return new Word($theWord);
+		if (isset(self::$instances[$theWord])) {
+			return self::$instances[$theWord];
+		}
+		$instance = new Word($theWord);
+		self::$instances[$theWord] = $instance;
+		return $instance;
 	}
 
 	public function orderedChars(
@@ -55,6 +62,17 @@ class Word {
 
 	private function orderChars(
 	) {
+		$result = "";
+		foreach ($this->computeHistogram() as $char => $count) {
+			for (; $count > 0; $count--) {
+				$result .= $char;
+			}
+		}
+		return $result;
+	}
+
+	private function computeHistogram(
+	) {
 		$wLength = strlen($this->theWord);
 		$histogram = self::$zero_histogram;
 		for ($i = 0; $i < $wLength; $i++) {
@@ -63,13 +81,7 @@ class Word {
 				$histogram[$theChar]++;
 			}
 		}
-		$result = "";
-		foreach ($histogram as $char => $count) {
-			for (; $count > 0; $count--) {
-				$result .= $char;
-			}
-		}
-		return $result;
+		return $histogram;
 	}
 
 }
