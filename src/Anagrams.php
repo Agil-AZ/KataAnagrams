@@ -58,11 +58,13 @@ class Anagrams {
 class Word {
 
 	private $theWord;
+	private $canonical;
 
 	public function __construct(
 		$theWord
 	) {
 		$this->theWord = $theWord;
+		$this->canonical = $this->orderChars();
 	}
 
 	public static function theWord(
@@ -72,6 +74,11 @@ class Word {
 	}
 
 	public function orderedChars(
+	) {
+		return $this->canonical;
+	}
+
+	private function orderChars(
 	) {
 		$wLength = strlen($this->theWord);
 		$theChars = array();
