@@ -49,16 +49,41 @@ class Anagrams {
 		$aWord,
 		$anotherWord
 	) {
-		$wLength = strlen($aWord);
-		if ($wLength != strlen($anotherWord)) {
-			return false;
-		}
-		for ($i = 0; $i < $wLength; $i++) {
-			$theChar = $aWord[$i];
-			if (strpos($anotherWord, $theChar) === false)
-				return false;
-		}
-		return true;
+		return Word::theWord($aWord)->orderedChars()
+			== Word::theWord($anotherWord)->orderedChars();
 	}	
+
+}
+
+class Word {
+
+	private $theWord;
+
+	public function __construct(
+		$theWord
+	) {
+		$this->theWord = $theWord;
+	}
+
+	public static function theWord(
+		$theWord
+	) {
+		return new Word($theWord);
+	}
+
+	public function orderedChars(
+	) {
+		$wLength = strlen($this->theWord);
+		$theChars = array();
+		for ($i = 0; $i < $wLength; $i++) {
+			$theChars []= $this->theWord[$i];
+		}
+		sort($theChars);
+		$theResult = "";
+		foreach ($theChars as $aChar) {
+			$theResult .= $aChar;
+		}
+		return $theResult;
+	}
 
 }

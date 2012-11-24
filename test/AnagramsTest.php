@@ -43,6 +43,7 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(Anagrams::isAnagram("sort", "rots"));
 		$this->assertFalse(Anagrams::isAnagram("sort", "ots"));
 		$this->assertFalse(Anagrams::isAnagram("sort", "a"));
+		$this->assertFalse(Anagrams::isAnagram("sorts", "trors"));
 	}
 
 	public function test_word_is_in_group(
