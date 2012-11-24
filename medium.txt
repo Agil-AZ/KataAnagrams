@@ -246,5 +246,6 @@ sinks
 skins
 knits
 stink
+rost
 rots
 sort
