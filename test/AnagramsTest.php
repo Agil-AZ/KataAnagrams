@@ -22,7 +22,7 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 	) {
 		$result = $this->anagrams->getGroups();
 		$this->assertTrue(
-			in_array("rots sort", $result)
+			in_array(array("rots", "sort"), $result)
 		);
 	}
 
@@ -47,11 +47,11 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 
 	public function test_word_is_in_group(
 	) {
-		$this->assertTrue(Anagrams::wordIsInGroup("sort", "a b sort"));
-		$this->assertTrue(Anagrams::wordIsInGroup("sort", "sort"));
-		$this->assertTrue(Anagrams::wordIsInGroup("sort", "rots sort"));
-		$this->assertFalse(Anagrams::wordIsInGroup("sort", "ots sot"));
-		$this->assertFalse(Anagrams::wordIsInGroup("sort", "a"));
+		$this->assertTrue(Anagrams::wordIsInGroup("sort", array("a", "b", "sort")));
+		$this->assertTrue(Anagrams::wordIsInGroup("sort", array("sort")));
+		$this->assertTrue(Anagrams::wordIsInGroup("sort", array("rots", "sort")));
+		$this->assertFalse(Anagrams::wordIsInGroup("sort", array("ots", "sot")));
+		$this->assertFalse(Anagrams::wordIsInGroup("sort", array("a")));
 	}
 
 	/**
@@ -71,12 +71,54 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 	public static function groups_and_words(
 	) {
 		return array(
-			array(-1, "sort", array("a")),
-			array(-1, "sort", array("a", "rts")),
-			array(0, "sort", array("rots")),
-			array(1, "sort", array("a", "rots")),
-			array(2, "sort", array("a", "b", "rots")),
-			array(2, "sort", array("a", "b", "rots sort")),
+			array(
+				-1, 
+				"sort", 
+				array(
+					array("a")
+				)
+			),
+			array(
+				-1, 
+				"sort", 
+				array(
+					array("a"), 
+					array("rts")
+				)
+			),
+			array(
+				0, 
+				"sort",  
+				array(
+					array("rots")
+				)
+			),
+			array(
+				1, 
+				"sort",  
+				array(
+					array("a"), 
+					array("rots")
+				)
+			),
+			array(
+				2, 
+				"sort",  
+				array(
+					array("a"), 
+					array("b"), 
+					array("rots")
+				)
+			),
+			array(
+				2, 
+				"sort",  	
+				array(
+					array("a"), 
+					array("b"), 
+					array("rots", "sort")
+				)
+			),
 		);
 	}
 

@@ -17,9 +17,9 @@ class Anagrams {
 			$word = trim($word);
 			$numGroup = self::findGroup($word, $groups);
 			if ($numGroup == -1) {
-				$groups []= $word;
+				$groups []= array($word);
 			} else {
-				$groups[$numGroup] .= " ".$word;
+				$groups[$numGroup][]= $word;
 			}
 		}
 		return $groups;
@@ -42,8 +42,7 @@ class Anagrams {
 		$word,
 		$group
 	) {
-		$wordsInGroup = explode(" ", $group);
-		foreach ($wordsInGroup as $existingWord) {
+		foreach ($group as $existingWord) {
 			if (self::isAnagram($word, $existingWord)) {
 				return true;
 			}
@@ -66,4 +65,5 @@ class Anagrams {
 		}
 		return true;
 	}	
+
 }
