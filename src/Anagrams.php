@@ -15,43 +15,17 @@ class Anagrams {
 		$groups = array();
 		foreach ($this->input_lines as $word) {
 			$word = trim($word);
-			$numGroup = self::findGroup($word, $groups);
-			if ($numGroup == -1) {
-				$groups []= array($word);
+			$theWord = Word::theWord($word);
+			$canonical = $theWord->orderedChars();
+
+			if (isset($groups[$canonical])) {
+				$groups[$canonical][]= $word;
 			} else {
-				$groups[$numGroup][]= $word;
+				$groups[$canonical] = array($word);
 			}
 		}
 		return $groups;
 	}
-
-	public static function findGroup(
-		$word,
-		$groups
-	) {
-		for ($index = 0; $index < count($groups); $index++) {
-			$group = $groups[$index];
-			if (self::wordIsInGroup($word, $group)) {
-				return $index;
-			}
-		}
-		return -1;
-	}
-
-	public static function wordIsInGroup(
-		$word,
-		$group
-	) {
-		return self::isAnagram($word, $group[0]);
-	}
-
-	public static function isAnagram(
-		$aWord,
-		$anotherWord
-	) {
-		return Word::theWord($aWord)->orderedChars()
-			== Word::theWord($anotherWord)->orderedChars();
-	}	
 
 }
 
