@@ -8,7 +8,7 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp(
 	) {
-		$this->anagrams = new Anagrams(dirname(__FILE__)."/../small.txt");
+		$this->anagrams = new Anagrams(dirname(__FILE__)."/../medium.txt");
 	}
 
 	/* ACCEPTANCE TESTS */
@@ -32,7 +32,7 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 	) {
 		$this->assertTrue(is_array($this->anagrams->input_lines));
 		$this->assertEquals(
-			17,
+			250,
 			count($this->anagrams->input_lines)
 		);
 	}
