@@ -42,12 +42,7 @@ class Anagrams {
 		$word,
 		$group
 	) {
-		foreach ($group as $existingWord) {
-			if (self::isAnagram($word, $existingWord)) {
-				return true;
-			}
-		}
-		return false;
+		return self::isAnagram($word, $group[0]);
 	}
 
 	public static function isAnagram(
