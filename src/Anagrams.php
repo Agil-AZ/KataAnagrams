@@ -55,10 +55,11 @@ class Anagrams {
 		$aWord,
 		$anotherWord
 	) {
-		if (strlen($aWord) != strlen($anotherWord)) {
+		$wLength = strlen($aWord);
+		if ($wLength != strlen($anotherWord)) {
 			return false;
 		}
-		for ($i = 0; $i < strlen($aWord); $i++) {
+		for ($i = 0; $i < $wLength; $i++) {
 			$theChar = $aWord[$i];
 			if (strpos($anotherWord, $theChar) === false)
 				return false;
