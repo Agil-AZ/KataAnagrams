@@ -2,12 +2,12 @@
 
 class Word {
 
-	private $word;
+	private $string;
 
 	public function __construct(
-		$word
+		$string
 	) {
-		$this->word = $word;
+		$this->string = $string;
 	}
 
 	public function isAnagramOf(
@@ -18,10 +18,10 @@ class Word {
 
 	public function canonical(
 	) {
-		$length = strlen($this->word);
+		$length = strlen($this->string);
 		$letters = array();
 		for ($i = 0; $i < $length; $i++) {
-			$letters []= $this->word[$i];
+			$letters []= $this->string[$i];
 		}
 		sort($letters);
 		$result = "";
@@ -36,9 +36,9 @@ class Word {
 class get {
 
 	public static function aWord(
-		$theWord
+		$theString
 	) {
-		return new Word($theWord);
+		return new Word($theString);
 	}
 
 }
