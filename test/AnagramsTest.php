@@ -55,4 +55,44 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function test_given_list_of_strings_compute_groups(
+	) {
+		$sample_list = array(
+			"dog",
+			"god",
+			"root",
+			"roots",
+			"rost",
+			"rosts",
+			"rots",
+			"sort",
+			"sorts",
+		);
+
+		$groups = get::groups($sample_list);
+
+		$this->assertEquals(5, count($groups));
+
+		$this->assertEquals(
+			array("dog", "god"),
+			$groups["dgo"]
+		);
+		$this->assertEquals(
+			array("root"),
+			$groups["oort"]
+		);
+		$this->assertEquals(
+			array("roots"),
+			$groups["oorst"]
+		);
+		$this->assertEquals(
+			array("rost", "rots", "sort"),
+			$groups["orst"]
+		);
+		$this->assertEquals(
+			array("rosts", "sorts"),
+			$groups["orsst"]
+		);
+	}
+
 }

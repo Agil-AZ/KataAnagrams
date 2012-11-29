@@ -16,7 +16,7 @@ class Word {
 		return $this->canonical() == $anotherWord->canonical();
 	}
 
-	private function canonical(
+	public function canonical(
 	) {
 		$result = "";
 		foreach ($this->getOrderedLetters() as $letter) {
@@ -50,6 +50,21 @@ class get {
 		$theString
 	) {
 		return new Word($theString);
+	}
+
+	public static function groups(
+		$words_list
+	) {
+		$groups = array();
+		foreach ($words_list as $string) {
+			$canonical = get::aWord($string)->canonical();
+			if (isset($groups[$canonical])) {
+				$groups[$canonical][]= $string;
+			} else {
+				$groups[$canonical]= array($string);
+			}
+		}
+		return $groups;
 	}
 
 }
