@@ -4,10 +4,13 @@ class Word {
 
 	private $string;
 
+	private $canonical;
+
 	public function __construct(
 		$string
 	) {
 		$this->string = $string;
+		$this->canonical = $this->computeCanonical();
 	}
 
 	public function isAnagramOf(
@@ -17,6 +20,11 @@ class Word {
 	}
 
 	public function canonical(
+	) {
+		return $this->canonical;
+	}
+
+	private function computeCanonical(
 	) {
 		$result = "";
 		foreach ($this->getOrderedLetters() as $letter) {
