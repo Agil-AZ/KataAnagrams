@@ -16,19 +16,30 @@ class Word {
 		return $this->canonical() == $anotherWord->canonical();
 	}
 
-	public function canonical(
+	private function canonical(
+	) {
+		$result = "";
+		foreach ($this->getOrderedLetters() as $letter) {
+			$result .= $letter;
+		}
+		return $result;
+	}
+
+	private function getOrderedLetters(
+	) {
+		$letters = $this->getLetters();
+		sort($letters);
+		return $letters;
+	}
+
+	private function getLetters(
 	) {
 		$length = strlen($this->string);
 		$letters = array();
 		for ($i = 0; $i < $length; $i++) {
 			$letters []= $this->string[$i];
 		}
-		sort($letters);
-		$result = "";
-		foreach ($letters as $letter) {
-			$result .= $letter;
-		}
-		return $result;
+		return $letters;
 	}
 
 }
