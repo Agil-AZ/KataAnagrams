@@ -7,10 +7,10 @@ class CanonicalExpressionForWord {
 	public function __construct(
 		$string
 	) {
-		$this->canonical = $this->computeCanonical($string);
+		$this->canonical = $this->buildCanonical($string);
 	}
 
-	private function computeCanonical(
+	private function buildCanonical(
 		$string
 	) {
 		$result = "";
