@@ -2,15 +2,12 @@
 
 class Word {
 
-	private $string;
-
 	private $canonical;
 
 	public function __construct(
 		$string
 	) {
-		$this->string = $string;
-		$this->canonical = $this->computeCanonical();
+		$this->canonical = $this->computeCanonical($string);
 	}
 
 	public function isAnagramOf(
@@ -25,27 +22,30 @@ class Word {
 	}
 
 	private function computeCanonical(
+		$string
 	) {
 		$result = "";
-		foreach ($this->getOrderedLetters() as $letter) {
+		foreach ($this->getOrderedLetters($string) as $letter) {
 			$result .= $letter;
 		}
 		return $result;
 	}
 
 	private function getOrderedLetters(
+		$string
 	) {
-		$letters = $this->getLetters();
+		$letters = $this->getLetters($string);
 		sort($letters);
 		return $letters;
 	}
 
 	private function getLetters(
+		$string
 	) {
-		$length = strlen($this->string);
+		$length = strlen($string);
 		$letters = array();
 		for ($i = 0; $i < $length; $i++) {
-			$letters []= $this->string[$i];
+			$letters []= $string[$i];
 		}
 		return $letters;
 	}
