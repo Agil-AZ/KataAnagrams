@@ -11,10 +11,9 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 		$aString,
 		$anotherString
 	) {
-		$this->assertTrue(
-			get::aWord($aString)->isAnagramOf(
-				get::aWord($anotherString)
-			)
+		$this->assertEquals(
+			get::aWord($aString)->canonical,
+			get::aWord($anotherString)->canonical
 		);
 	}
 
@@ -36,10 +35,9 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 		$aString,
 		$anotherString
 	) {
-		$this->assertFalse(
-			get::aWord($aString)->isAnagramOf(
-				get::aWord($anotherString)
-			)
+		$this->assertNotEquals(
+			get::aWord($aString)->canonical,
+			get::aWord($anotherString)->canonical
 		);
 	}
 

@@ -10,12 +10,6 @@ class Word {
 		$this->canonical = $this->computeCanonical($string);
 	}
 
-	public function isAnagramOf(
-		$anotherWord
-	) {
-		return $this->canonical == $anotherWord->canonical;
-	}
-
 	private function computeCanonical(
 		$string
 	) {
