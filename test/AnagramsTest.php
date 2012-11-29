@@ -93,4 +93,25 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	/**
+	* @dataProvider input_files
+	*/
+	public function test_read_from_file(
+		$input_file,
+		$word_count
+	) {
+		$word_list = get::wordsFromFile($input_file);
+
+		$this->assertEquals($word_count, count($word_list));
+	}
+
+	public static function input_files(
+	) {
+		return array(
+			array("large.txt", 219156),
+			array("medium.txt", 250),
+			array("small.txt", 17),
+		);
+	}
+
 }

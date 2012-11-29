@@ -64,4 +64,10 @@ class get {
 		return $groups;
 	}
 
+	public static function wordsFromFile(
+		$input_file
+	) {
+		return file($input_file);
+	}
+
 }
