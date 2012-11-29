@@ -8,12 +8,12 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 	* @dataProvider some_anagrams
 	*/
 	public function test_wordsThatAreAnagrams(
-		$aString,
-		$anotherString
+		$aWord,
+		$anotherWord
 	) {
 		$this->assertEquals(
-			get::aWord($aString)->canonical,
-			get::aWord($anotherString)->canonical
+			get::canonical($aWord)->canonical,
+			get::canonical($anotherWord)->canonical
 		);
 	}
 
@@ -32,12 +32,12 @@ class AnagramsTest extends PHPUnit_Framework_TestCase {
 	* @dataProvider some_non_anagrams
 	*/
 	public function test_wordsThatArentAnagrams(
-		$aString,
-		$anotherString
+		$aWord,
+		$anotherWord
 	) {
 		$this->assertNotEquals(
-			get::aWord($aString)->canonical,
-			get::aWord($anotherString)->canonical
+			get::canonical($aWord)->canonical,
+			get::canonical($anotherWord)->canonical
 		);
 	}
 

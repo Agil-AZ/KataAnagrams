@@ -43,7 +43,7 @@ class Word {
 
 class get {
 
-	public static function aWord(
+	public static function canonical(
 		$theString
 	) {
 		return new Word($theString);
@@ -54,7 +54,7 @@ class get {
 	) {
 		$groups = array();
 		foreach ($words_list as $string) {
-			$canonical = get::aWord($string)->canonical;
+			$canonical = get::canonical($string)->canonical;
 			if (isset($groups[$canonical])) {
 				$groups[$canonical][]= $string;
 			} else {
