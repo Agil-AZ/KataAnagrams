@@ -2,7 +2,7 @@
 
 class Word {
 
-	private $canonical;
+	public $canonical;
 
 	public function __construct(
 		$string
@@ -13,12 +13,7 @@ class Word {
 	public function isAnagramOf(
 		$anotherWord
 	) {
-		return $this->canonical() == $anotherWord->canonical();
-	}
-
-	public function canonical(
-	) {
-		return $this->canonical;
+		return $this->canonical == $anotherWord->canonical;
 	}
 
 	private function computeCanonical(
@@ -65,7 +60,7 @@ class get {
 	) {
 		$groups = array();
 		foreach ($words_list as $string) {
-			$canonical = get::aWord($string)->canonical();
+			$canonical = get::aWord($string)->canonical;
 			if (isset($groups[$canonical])) {
 				$groups[$canonical][]= $string;
 			} else {
