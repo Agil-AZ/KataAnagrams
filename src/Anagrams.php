@@ -1,6 +1,6 @@
 <?php
 
-class Word {
+class CanonicalExpressionForWord {
 
 	public $canonical;
 
@@ -46,7 +46,7 @@ class get {
 	public static function canonical(
 		$theString
 	) {
-		return new Word($theString);
+		return new CanonicalExpressionForWord($theString);
 	}
 
 	public static function groups(
