@@ -1,0 +1,3 @@
+Learn how to create a proper mock
+Refactor: Move behaviour to WordUtil, Rename WordUtil, ...
+Add real behaviour to WordUtil 
