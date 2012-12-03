@@ -13,5 +13,10 @@ describe 'anagram' do
       anagram = Anagram.new('./three_words.txt')
       anagram.print.should eql "pablo\npepe\nedu\n"
     end
+
+    it 'print this words with its anagrams' do
+      anagram = Anagram.new('./words_test.txt')
+      anagram.print.should eql "kinship pinkish\nenlist inlets listen silent\n"
+    end
   end
 end

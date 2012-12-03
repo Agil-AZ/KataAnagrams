@@ -1,19 +1,24 @@
 class Anagram
+  include WordUtil
+
   def initialize(file)
     begin
       file = File.new('./spec/' + file, 'r')
-      @words = Array.new
+      @words = Hash.new
       while(line = file.gets)
-        @words << line
+        key = getSymbol(line)
+        if @words[key] then
+          @words[key] = @words[key] << " " << line.delete("\n")
+        else
+          @words[key] = line.delete("\n")
+        end
       end
     rescue => err
-      puts 'error'
+      puts err.to_s
     end
   end
 
   def print
-    result = ""
-    @words.each { |word| result +=word } if @words
-    result
+    @words.inject("") { |toRet, (key, value)| toRet << value+"\n" } if @words
   end
 end
