@@ -1,20 +1,20 @@
 class Anagram
-  include WordUtil
 
   def initialize(file)
     begin
       file = File.new('./spec/' + file, 'r')
       @words = Hash.new
       while(line = file.gets)
-        key = getSymbol(line)
+        word = Word.new(line)
+        key = word.symbol
         if @words[key] then
-          @words[key] = @words[key] << " " << line.delete("\n")
+          @words[key] = @words[key] << " " << word.name
         else
-          @words[key] = line.delete("\n")
+          @words[key] = word.name
         end
       end
     rescue => err
-      puts err.to_s
+      #TODO manage error
     end
   end
 
