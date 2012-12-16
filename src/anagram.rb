@@ -6,12 +6,7 @@ class Anagram
       @words = Hash.new
       while(line = file.gets)
         word = Word.new(line)
-        key = word.symbol
-        if @words[key] then
-          @words[key] = @words[key] << " " << word.name
-        else
-          @words[key] = word.name
-        end
+        add_word_to_map(word)
       end
     rescue => err
       #TODO manage error
@@ -20,5 +15,17 @@ class Anagram
 
   def print
     @words.inject("") { |toRet, (key, value)| toRet << value+"\n" } if @words
+  end
+
+  private
+  
+  def add_word_to_map (word)
+    key = word.symbol
+    value = word.name
+    if @words[key] then
+      @words[key] = @words[key] << " " << value
+    else
+      @words[key] = value
+    end
   end
 end
