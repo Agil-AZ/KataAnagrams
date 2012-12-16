@@ -23,7 +23,7 @@ class Anagram
     key = word.symbol
     value = word.name
     if @words[key] then
-      @words[key] = @words[key] << " " << value
+      @words[key] = "#{@words[key]} #{value}"
     else
       @words[key] = value
     end
